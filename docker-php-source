@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+set -e
+
+## Copied from docker-library/php
+## Adapted to instead clone PHP branch
+
+version=${PHP_VERSION:-8.2}
+
+dir=/usr/src/php
+
+usage() {
+	echo "usage: $0 COMMAND"
+	echo
+	echo "Manage php source tarball lifecycle."
+	echo
+	echo "Commands:"
+	echo "   extract  extract php source tarball into directory $dir if not already done."
+	echo "   delete   delete extracted php source located into $dir if not already done."
+	echo
+}
+
+case "$1" in
+	extract)
+		mkdir -p "$dir"
+		if [ ! -f "$dir/.docker-extracted" ]; then
+		  	git clone https://github.com/php/php-src.git --branch=PHP-$version --depth=1 "$dir"
+			touch "$dir/.docker-extracted"
+		fi
+		;;
+
+	delete)
+		rm -rf "$dir"
+		;;
+
+	*)
+		usage
+		exit 1
+		;;
+esac
