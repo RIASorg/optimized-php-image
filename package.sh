@@ -7,7 +7,7 @@ mkdir -p /php
 # - Copy all dependencies explictly identified
 while read -r in; do cp -Lr --parents --preserve=links "$in" /php/ 2>/dev/null || :; done < /usr/local/FILES_TO_KEEP
 
-if ["$1" == "scratch"]; then
+if [ "$1" == "scratch" ]; then
   printf "Packaging for scratch"
   # OPCache or APCu need /tmp available for some kind of lock (???)
   mkdir -p /php/tmp
