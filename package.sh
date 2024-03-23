@@ -24,5 +24,5 @@ fi
 # Since they are fairly small overall, we can copy them over regardless of extension
 if [ -d "/etc/ssl/certs" ]
 then
-  cp -Lr --parents --preserve=links /etc/ss/certs /php/
+  cp -Lr --parents --preserve=links /etc/ssl/certs /php/
 fi
