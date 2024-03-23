@@ -35,8 +35,6 @@ jobs:
     strategy:
       matrix:
         target: [full-builder, scratch-builder, full-runtime, scratch-runtime]
-    env:
-      IMAGE_NAME: ${env.IMAGE_NAME}}:${{ matrix.target }}
 
     steps:
       - name: Checkout repository
@@ -73,6 +71,8 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: |
+            prefix=${{ matrix.target}},onlatest=true
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
