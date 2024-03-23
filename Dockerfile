@@ -202,4 +202,4 @@ ENV PHP_VERSION=$PHP_VERSION
 COPY --from=packaged-for-runtime-full /php/. /
 
 FROM scratch as scratch-runtime
-COPY --from=packaged-for-runtime-scratch /php /php
+COPY --from=packaged-for-runtime-scratch /php/. /
