@@ -102,3 +102,7 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+      - name: Run PHP in the images
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: echo "${TAGS}" | xargs -I {} docker run --entrypoint /usr/local/bin/php {} -m
