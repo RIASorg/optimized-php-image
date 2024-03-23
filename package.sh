@@ -14,7 +14,7 @@ if [ "$1" == "scratch" ]; then
 
   # A lot of extensions (for example, rdkafka) will need the certificates locally available
   # Since they are fairly small overall, we can copy them over regardless of extension
-  if [-d /etc/ssl/certs]; then
+  if [ -d /etc/ssl/certs ]; then
     cp -Lr --parents --preserve=links /etc/ss/certs /php/
   fi
 else
