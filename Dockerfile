@@ -174,15 +174,15 @@ RUN \
     keep "/usr/local/lib/php/build" && \
     keep "/usr/local/include/php" && \
     keep "/usr/local/etc/fake-packages" && \
-    package "no"
+    package "full"
 
 FROM base as packaged-for-runtime
 
 FROM packaged-for-runtime as packaged-for-runtime-scratch
-RUN package "yes"
+RUN package "scratch"
 
 FROM packaged-for-runtime as packaged-for-runtime-full
-RUN package "no"
+RUN package "full"
 
 FROM $BUILD_BASE_IMAGE as full-builder
 ARG PHP_VERSION=8.2
