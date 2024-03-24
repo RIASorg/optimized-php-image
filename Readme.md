@@ -40,7 +40,7 @@ but is instead based on `scratch`. You can use it in an image of your choice, fo
 
 ````dockerfile
 FROM debian:bookworm as my-builder
-COPY --from=ghcr.io/riasorg/optimized-php-image:latest-scratch-builder /php/. /
+COPY --from=ghcr.io/riasorg/optimized-php-image:latest-scratch-builder /. /
 
 # Install fake packages
 RUN dpkg -i /usr/local/etc/fake-packages/*.deb
