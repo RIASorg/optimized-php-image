@@ -105,4 +105,4 @@ jobs:
       - name: Run PHP in the images
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
-        run: echo "${TAGS}" | xargs -I {} docker run -v /lib64:/lib64 -v /lib:/lib --entrypoint /usr/local/bin/php {} -m
+        run: echo "${TAGS}" | xargs -I {} docker run -v /lib64:/lib64 -v /lib:/lib -v /tmp:/tmp --entrypoint /usr/local/bin/php {} -m
