@@ -154,9 +154,11 @@ RUN \
 
 # Package PHP up into /php
 RUN \
-	keep-phpcli && \
+    keep-phpcli && \
     keep /usr/local/bin/docker-php-ext-enable && \
-    keep /usr/local/bin/php-settings-update
+    keep /usr/local/bin/php-settings-update && \
+    keep /usr/bin/env && \
+    keep /bin/sh
 
 FROM base as packaged-for-building
 # - Copy /usr/local/lib/php/build directory which is needed to build some extensions
