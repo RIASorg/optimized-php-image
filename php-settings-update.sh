@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -xe
 
-echo "$1=$2" | tee /usr/local/etc/php/conf.d/${1@Q}.ini > /dev/null
+printf "%s=%s" "$1" "$2" > /usr/local/etc/php/conf.d/${1@Q}.ini
